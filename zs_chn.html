@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>广东中山——城市介绍</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+        
+        :root {
+            --primary: #fbc955;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #fff;
+        }
+        
+        /* Sticky Header */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #eee;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)), 
+                        url('http://www.zs.gov.cn/img/0/377/377439/2446991.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            max-width: 800px;
+        }
+        
+        .hero p {
+            font-size: 1.35rem;
+            max-width: 680px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary);
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.25);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 102, 204, 0.35);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        .section-title {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+            position: absolute;
+            bottom: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* History & Culture Section */
+        .history-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .history-text {
+            font-size: 1.15rem;
+            line-height: 2;
+        }
+        
+        .history-text p {
+            margin-bottom: 24px;
+        }
+        
+        .history-image {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .history-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        
+        .history-image:hover img {
+            transform: scale(1.06);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0f172a;
+            color: #cbd5e1;
+            padding: 80px 0 40px;
+        }
+        
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 24px;
+            font-size: 1.4rem;
+        }
+        
+        .footer-col p {
+            margin-bottom: 12px;
+            opacity: 0.85;
+        }
+        
+        .footer-bottom {
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            text-align: center;
+            font-size: 0.95rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .history-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 20px;
+            }
+            
+            nav ul {
+                gap: 20px;
+                font-size: 0.95rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">中山 | Zhongshan</a>
+            <nav>
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">名优特产</a></li>
+                    <li><a href="#">A级景区</a></li>
+                    <li><a href="#">旅游指南</a></li>
+                    <li><a href="http://www.zs.gov.cn/zjzs/zsgk/content/post_325055.html">中山政府</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>魅力中山：<br>伟人故里，湾区明珠</h1>
+            <p>广东省中山市，古称香山，人杰地灵，名人辈出，是一代伟人孙中山先生的故乡。中山市位于广东省中南部，珠江三角洲中部偏南的西江、北江下游出海处。位于北纬22°11′～22°47′，东经113°09′～113°46′之间。北接广州市南沙区和佛山市顺德区，西邻江门市区、新会区和珠海市斗门区，东南连珠海市，东隔珠江口伶仃洋与深圳市和香港特别行政区相望。</p>
+            <a href="#history" class="cta-button">了解中山</a>
+        </div>
+    </section>
+
+    <!-- History & Culture Section -->
+    <section id="history">
+        <div class="container">
+            <h2 class="section-title">中山简史</h2>
+            
+            <div class="history-grid">
+                <article class="history-text">
+                    <p>中山，1925年前称香山。据宋朝《太平寰宇记》记载：东莞县香山在“县南隔海三百里，地多神仙花卉，故曰：香山”。</p>
+                    <p>古代香山，是孤悬于珠江口外伶仃洋上的岛屿，境域仅为现在的五桂山和凤凰山周围的山地和丘陵区，即石岐城区至澳门一带地域。考古表明，在距今5000多年前的新石器时代，已有土著古越族人在香山岛屿捕鱼打猎和半定居。</p>
+                    <p>香山在汉代属番禺县地域，晋代以后属东官郡地域，唐代属东莞县地域。南宋绍兴二十二年（1152年）设香山县，并割入南海、番禺、新会三县的滨海地域，隶属广州。民国时期，直属广东省。香山县翠亨村是孙中山的故乡。1925年3月12日，孙中山逝世。同年4月15日，广州中华民国陆海军大元帅府决定，将香山县更名为中山县，以纪念孙中山。1949年10月，中华人民共和国成立后，仍为中山县，属佛山地区管辖。1983年12月，经国务院批准，中山县改为中山市（县级），属佛山市管辖。1988年1月，经国务院批复，中山市升格为地级市，直属广东省管辖</p>
+                </article>
+                
+                <div class="history-image">
+                    <img src="https://p9.itc.cn/images01/20231008/939847cc401143d59b1ccb810a4f0df2.png" alt="中山历史文化景观" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+<div class="footer-content">
+            <div class="footer-col">
+                <h3>关于我们</h3>
+                <p>更多内容敬请期待……</p>
+            </div>
+            <div class="footer-col">
+                <h3>联系方式</h3>
+                <p><strong>地址：</strong>广东省中山市</p>
+                <p><strong>电话：</strong>xxx xxxx xxxx</p>
+                <p><strong>邮箱：</strong>123456@xx.com</p>
+            </div>
+            <div class="footer-col">
+                <h3>更多链接</h3>
+                <p>名优特产</p>
+                <p>A级景区</p>
+                <p>旅游指南</p>
+                <p>中山政府</p>
+            </div>
+        </div>        
+        <div class="footer-bottom">
+            <p>网页声明：本页面内容摘自中山市人民政府官方网站，仅用于个人作业演示。</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
